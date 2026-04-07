@@ -4,8 +4,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import BannerForm from "../../_components/banner-form";
 
-export default async function EditBannerPage({ params }: { params: { id: string } }) {
-  const { id } = params;
+export default async function EditBannerPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
   
   // Fetch banner data (Server Component)
   const banners = await bannerService.getAll();
